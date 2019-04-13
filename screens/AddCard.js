@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
-import { Button, Input } from "react-native-elements";
+// import { Button, Input } from "react-native-elements";
 import { styles } from "../assets/styles/styles";
 
 export default class AddCard extends Component {
@@ -11,7 +11,7 @@ export default class AddCard extends Component {
       <View>
         <View style={styles.container}>
           <Text style={styles.title}>{deck.title}</Text>
-          <Input
+          {/* <Input
             placeholder="Question"
             leftIcon={{ type: "font-awesome", name: "question-circle" }}
           />
@@ -23,7 +23,7 @@ export default class AddCard extends Component {
             style={styles.button}
             title="Add a question"
             // onPress={() => navigation.navigate("TakeQuizz", { deck })}
-          />
+          /> */}
         </View>
       </View>
     );

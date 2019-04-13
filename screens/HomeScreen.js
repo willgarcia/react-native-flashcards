@@ -1,12 +1,19 @@
 import React from "react";
 import { Image, ScrollView, Text, View } from "react-native";
+import { connect } from "react-redux";
+import { storeInitialData } from "../actions/shared";
 import { styles } from "../assets/styles/home";
 import Decks from "./Decks";
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(storeInitialData());
+  }
 
   render() {
     return (
@@ -35,3 +42,13 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
+
+// function mapStateToProps(state) {
+//   const key = timeToString();
+
+//   return {
+//     alreadyLogged: state[key]
+//   };
+// }
+
+export default connect()(HomeScreen);
