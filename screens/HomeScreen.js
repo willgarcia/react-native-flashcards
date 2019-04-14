@@ -11,7 +11,6 @@ class HomeScreen extends React.Component {
   };
 
   componentDidMount() {
-    // const { dispatch } = this.props;
     this.props.dispatch(storeInitialData());
   }
 
