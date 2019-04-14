@@ -1,8 +1,9 @@
 import { Platform } from "react-native";
 import { StackNavigator, TabNavigator } from "react-navigation";
+import DeckDetail from "../screens/DeckDetail";
 import HomeScreen from "../screens/HomeScreen";
 import NewDeck from "../screens/NewDeck";
-import { purple, white } from "../utils/colors";
+import { black, purple, white } from "../utils/colors";
 
 const Tabs = TabNavigator(
   {
@@ -31,5 +32,14 @@ const Tabs = TabNavigator(
 export const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs
+  },
+  DeckDetail: {
+    screen: DeckDetail,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: black
+      }
+    }
   }
 });
