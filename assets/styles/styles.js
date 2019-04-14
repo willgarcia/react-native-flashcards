@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
 
   buttons: {
     width: "100%",
-    height: "30%",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 10
@@ -35,7 +34,13 @@ export const styles = StyleSheet.create({
     padding: 10
   },
   quizzProgress: {
-    fontSize: 20,
-    padding: 10
+    width: 50,
+    padding: 10,
+    marginBottom: 10,
+    marginLeft: 10,
+    backgroundColor: "violet"
+  },
+  answer: {
+    marginTop: 10
   }
 });

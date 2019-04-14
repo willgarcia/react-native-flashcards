@@ -59,11 +59,13 @@ export default class AddDeck extends Component {
             </FormValidationMessage>
           )}
 
-          <Button
-            style={styles.button}
-            title="Add deck"
-            onPress={() => this.handleSubmit(this.props.navigation)}
-          />
+          <View style={styles.buttons}>
+            <Button
+              style={styles.button}
+              title="Add deck"
+              onPress={() => this.handleSubmit(this.props.navigation)}
+            />
+          </View>
         </View>
       </View>
     );

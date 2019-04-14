@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Animated, Text, View } from "react-native";
 import {
   Button,
   FormInput,
@@ -14,8 +14,19 @@ export default class AddCard extends Component {
   state = {
     question: "",
     answer: "",
-    errors: []
+    errors: [],
+    opacity: new Animated.Value(0),
+    width: new Animated.Value(0),
+    height: new Animated.Value(0)
   };
+
+  componentDidMount() {
+    const { opacity, width, height } = this.state;
+
+    Animated.timing(opacity, { toValue: 1, duration: 1500 }).start();
+    Animated.spring(width, { toValue: 120, speed: 3 }).start();
+    Animated.spring(height, { toValue: 120, speed: 3 }).start();
+  }
 
   isFormValid(question, answer) {
     const errors = [];
@@ -33,14 +44,9 @@ export default class AddCard extends Component {
   handleSubmit(navigation) {
     const { question, answer } = this.state;
 
-    const valid = this.isFormValid(question, answer);
-
-    if (valid) {
-      const card = { question, answer };
-      console.log("AddCard.handleSubmit.card", card);
-
+    if (this.isFormValid(question, answer)) {
       const { deck } = this.props.navigation.state.params;
-      addCardToDeck(deck.title, card)
+      addCardToDeck(deck.title, { question, answer })
         .then(() => {
           navigation.navigate("Home");
         })
@@ -52,8 +58,16 @@ export default class AddCard extends Component {
     const { deck } = this.props.navigation.state.params;
     const { errors } = this.state;
 
+    const { opacity, width, height } = this.state;
     return (
       <View>
+        <View style={styles.animation}>
+          <Animated.Image
+            style={[{ opacity, width, height }, { alignItems: "center" }]}
+            source={require("../assets/images/deck.png")}
+          />
+        </View>
+
         <View style={styles.container}>
           <Text style={styles.title}>{deck.title}</Text>
 
@@ -75,11 +89,13 @@ export default class AddCard extends Component {
             </FormValidationMessage>
           )}
 
-          <Button
-            style={styles.button}
-            title="Add"
-            onPress={() => this.handleSubmit(this.props.navigation)}
-          />
+          <View style={styles.buttons}>
+            <Button
+              style={styles.button}
+              title="Add"
+              onPress={() => this.handleSubmit(this.props.navigation)}
+            />
+          </View>
         </View>
       </View>
     );

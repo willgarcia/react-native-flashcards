@@ -7,7 +7,7 @@ export function getInitialData() {
   }));
 }
 
-const DECKS_STORAGE_KEY = "DeckApp:Decks3";
+const DECKS_STORAGE_KEY = "DeckApp:Decks6";
 
 export function getDecks() {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(JSON.parse);
@@ -15,7 +15,6 @@ export function getDecks() {
 
 export function getDeck(title) {
   return getDecks().then(decks => {
-    console.log("API.getDeck", decks);
     return decks.find(deck => deck.title === title);
   });
 }

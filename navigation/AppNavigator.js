@@ -7,33 +7,36 @@ import HomeScreen from "../screens/HomeScreen";
 import StartQuizz from "../screens/StartQuizz";
 import { purple, white } from "../utils/colors";
 
-const Tabs = TabNavigator(
+const tabBarOptions = {
+  activeTintColor: Platform.OS === "ios" ? purple : white,
+  style: {
+    height: 90,
+    backgroundColor: Platform.OS === "ios" ? white : purple,
+    shadowColor: "rgba(0, 0, 0, 0.24)",
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    paddingBottom: 30,
+    shadowRadius: 6,
+    shadowOpacity: 1
+  },
+  inactiveTintColor: "gray"
+};
+
+const HomeTabs = TabNavigator(
   {
     Home: HomeScreen,
     AddDeck
   },
   {
-    tabBarOptions: {
-      activeTintColor: Platform.OS === "ios" ? purple : white,
-      style: {
-        height: 90,
-        backgroundColor: Platform.OS === "ios" ? white : purple,
-        shadowColor: "rgba(0, 0, 0, 0.24)",
-        shadowOffset: {
-          width: 0,
-          height: 3
-        },
-        paddingBottom: 30,
-        shadowRadius: 6,
-        shadowOpacity: 1
-      }
-    }
+    tabBarOptions
   }
 );
 
 export const MainNavigator = StackNavigator({
   Home: {
-    screen: Tabs
+    screen: HomeTabs
   },
   DeckDetail,
   AddCard,
