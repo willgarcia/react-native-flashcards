@@ -29,3 +29,50 @@ export function removeEntry(key) {
     AsyncStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(data));
   });
 }
+
+const DECKS_STORAGE_KEY = "DeckApp:Decks";
+
+export function getDecks() {
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(JSON.parse);
+}
+
+// export function getDeck(id) {
+//   return getDecks().then(data => {
+//     return data[id];
+//   });
+// }
+
+// export function addCardToDeck(title, card) {
+//   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+//     .then(JSON.parse)
+//     .then(data => {
+//       const data = {
+//         ...decks,
+//         [title]: {
+//           ...decks[title],
+//           questions: decks[title].questions
+//             ? decks[title].questions.concat(card)
+//             : [card]
+//         }
+//       };
+//       return AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(data));
+//     });
+// }
+
+export function initDecks(data) {
+  console.log("initDecks", decks);
+
+  return AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(data));
+}
+
+// export function saveDeckTitle(title) {
+//   return AsyncStorage.mergeItem(
+//     DECKS_STORAGE_KEY,
+//     JSON.stringify({
+//       [title]: {
+//         title,
+//         questions: []
+//       }
+//     })
+//   );
+// }

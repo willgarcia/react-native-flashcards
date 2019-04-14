@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { connect } from "react-redux";
 import { styles } from "../assets/styles/styles";
-import { Deck } from "./Deck";
+// import { getDecks } from "../utils/api";
 
 class Decks extends Component {
   // componentDidMount() {
@@ -13,18 +13,19 @@ class Decks extends Component {
   // }
 
   render() {
-    const { decks } = this.props;
+    const { test } = this.props;
 
     return (
       <ScrollView style={styles.container}>
         <View>
-          {decks.map(deck => (
+          <Text>{test}</Text>
+          {/* {decks.map(deck => (
             <Deck
               deck={deck}
               key={deck.title}
               navigation={this.props.navigation}
             />
-          ))}
+          ))} */}
         </View>
       </ScrollView>
     );
@@ -33,7 +34,7 @@ class Decks extends Component {
 
 function mapStateToProps(state) {
   return {
-    decks: []
+    test: JSON.stringify(state)
   };
 }
 

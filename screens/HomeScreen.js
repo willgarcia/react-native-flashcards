@@ -11,8 +11,8 @@ class HomeScreen extends React.Component {
   };
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(storeInitialData());
+    // const { dispatch } = this.props;
+    this.props.dispatch(storeInitialData());
   }
 
   render() {
@@ -42,13 +42,5 @@ class HomeScreen extends React.Component {
     );
   }
 }
-
-// function mapStateToProps(state) {
-//   const key = timeToString();
-
-//   return {
-//     alreadyLogged: state[key]
-//   };
-// }
 
 export default connect()(HomeScreen);

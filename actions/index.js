@@ -17,6 +17,8 @@ export function addEntry(entry) {
 }
 
 export function receiveDecks(decks) {
+  console.log("receiveDecks", decks);
+
   return {
     type: RECEIVE_DECKS,
     decks
