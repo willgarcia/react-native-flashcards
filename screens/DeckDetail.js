@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Animated, Text, View } from "react-native";
-// import { Button } from "react-native-elements";
+import { Button } from "react-native-elements";
 import { styles } from "../assets/styles/styles";
 
 export default class DeckDetail extends Component {
@@ -37,7 +37,7 @@ export default class DeckDetail extends Component {
           <Text style={styles.subtitle}>{deck.questions.length} cards</Text>
         </View>
         <View style={styles.buttons}>
-          {/* <Button
+          <Button
             style={styles.button}
             title="Add a new card"
             onPress={() => navigation.navigate("AddCard", { deck })}
@@ -46,7 +46,7 @@ export default class DeckDetail extends Component {
             style={styles.button}
             title="Start a quizz"
             onPress={() => navigation.navigate("StartQuizz", { deck })}
-          /> */}
+          />
         </View>
       </View>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-// import { Button } from "react-native-elements";
+import { Button } from "react-native-elements";
 import { styles } from "../assets/styles/styles";
 import { clearLocalNotification, setLocalNotification } from "../utils/helpers";
 
@@ -57,7 +57,7 @@ export default class StartQuizz extends Component {
             {countCorrect}/{deck.questions.length} correct answers found!
           </Text>
 
-          {/* <Button
+          <Button
             style={styles.button}
             title="Re-start quizz"
             onPress={() => this.restartQuizz()}
@@ -68,7 +68,7 @@ export default class StartQuizz extends Component {
             onPress={() =>
               this.props.navigation.navigate("DeckDetail", { deck })
             }
-          /> */}
+          />
         </View>
       );
     }
@@ -92,7 +92,6 @@ export default class StartQuizz extends Component {
         )}
 
         {showAnswer && <Text>{question.answer}</Text>}
-
         <Button
           style={styles.button}
           title="Correct"

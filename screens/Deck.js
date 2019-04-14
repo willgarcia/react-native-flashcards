@@ -12,7 +12,7 @@ export class Deck extends Component {
       >
         <View style={[styles.container, styles.borderBottom]}>
           <Text style={styles.title}>{deck.title}</Text>
-          <Text style={styles.subtitle}>{deck.questions.length} cards</Text>
+          <Text style={styles.subtitle}>{deck.questions.length} card(s)</Text>
         </View>
       </TouchableOpacity>
     );

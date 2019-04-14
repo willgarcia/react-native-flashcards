@@ -20,12 +20,8 @@ class Decks extends Component {
     return (
       <ScrollView style={styles.container}>
         <View>
-          {decks.map(deck => (
-            <Deck
-              deck={deck}
-              key={deck.title}
-              navigation={this.props.navigation}
-            />
+          {decks.map((deck, index) => (
+            <Deck deck={deck} key={index} navigation={this.props.navigation} />
           ))}
         </View>
       </ScrollView>

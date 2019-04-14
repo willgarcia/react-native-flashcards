@@ -7,15 +7,16 @@ export function getInitialData() {
   }));
 }
 
-const DECKS_STORAGE_KEY = "DeckApp:Decks";
+const DECKS_STORAGE_KEY = "DeckApp:Decks3";
 
 export function getDecks() {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(JSON.parse);
 }
 
-export function getDeck(id) {
-  return getDecks().then(data => {
-    return data[id];
+export function getDeck(title) {
+  return getDecks().then(decks => {
+    console.log("API.getDeck", decks);
+    return decks.find(deck => deck.title === title);
   });
 }
 
@@ -23,16 +24,13 @@ export function addCardToDeck(title, card) {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
     .then(JSON.parse)
     .then(data => {
-      const decks = {
-        ...decks,
-        [title]: {
-          ...decks[title],
-          questions: decks[title].questions
-            ? decks[title].questions.concat(card)
-            : [card]
+      const decks = data.map(deck => {
+        if (deck.title === title) {
+          deck.questions.push(card);
         }
-      };
-      return AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks));
+        return deck;
+      });
+      return initDecks(decks);
     });
 }
 
@@ -41,13 +39,13 @@ export function initDecks(data) {
 }
 
 export function saveDeckTitle(title) {
-  return AsyncStorage.mergeItem(
-    DECKS_STORAGE_KEY,
-    JSON.stringify({
-      [title]: {
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+    .then(JSON.parse)
+    .then(data => {
+      data.push({
         title,
         questions: []
-      }
-    })
-  );
+      });
+      return initDecks(data);
+    });
 }
